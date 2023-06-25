@@ -1,0 +1,58 @@
+class Tamagotchi:
+    def __init__(self, name):
+        self.name = name
+        self.hunger = 0
+        self.energy = 100
+        self.happiness = 100
+
+    def feed(self):
+        self.hunger -= 10
+        if self.hunger < 0:
+            self.hunger = 0
+
+    def play(self):
+        self.happiness += 10
+        if self.happiness > 100:
+            self.happiness = 100
+        self.energy -= 10
+        if self.energy < 0:
+            self.energy = 0
+
+    def sleep(self):
+        self.energy += 10
+        if self.energy > 100:
+            self.energy = 100
+
+    def check_status(self):
+        print(f"{self.name} status:")
+        print(f"Hunger: {self.hunger}")
+        print(f"Energy: {self.energy}")
+        print(f"Happiness: {self.happiness}")
+
+
+if __name__ == "__main__":
+    name = input("Enter the name of your Tamagotchi: ")
+    tamagotchi = Tamagotchi(name)
+
+    while True:
+        print("1. Feed")
+        print("2. Play")
+        print("3. Sleep")
+        print("4. Check Status")
+        print("5. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            tamagotchi.feed()
+        elif choice == "2":
+            tamagotchi.play()
+        elif choice == "3":
+            tamagotchi.sleep()
+        elif choice == "4":
+            tamagotchi.check_status()
+        elif choice == "5":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
